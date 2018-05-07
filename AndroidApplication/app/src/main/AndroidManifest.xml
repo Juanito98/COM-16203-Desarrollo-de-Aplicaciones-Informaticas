@@ -20,7 +20,7 @@
         <activity android:name=".Buscar" />
         <activity android:name=".Localizar" />
         <activity android:name=".Historial" />
-        <activity android:name=".menu"></activity>
+        <activity android:name=".Menu"></activity>
     </application>
 
 </manifest>

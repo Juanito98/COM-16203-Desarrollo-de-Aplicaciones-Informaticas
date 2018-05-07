@@ -5,48 +5,8 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
-    tools:context=".menu">
+    tools:context=".Menu">
 
-    <!--
-    <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:orientation="horizontal">
-
-        <Button
-            android:id="@+id/btComprar"
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:layout_weight="1"
-            android:layout_gravity="center_vertical"
-            android:text="Comprar" />
-
-
-        <Button
-            android:id="@+id/btBuscar"
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:layout_weight="1"
-            android:layout_gravity="center_vertical"
-            android:text="Buscar" />
-
-        <Button
-            android:id="@+id/btHistorial"
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:layout_weight="1.1"
-            android:layout_gravity="center_vertical"
-            android:text="Historial" />
-
-        <Button
-            android:id="@+id/btLocalizar"
-            android:layout_width="0dp"
-            android:layout_height="wrap_content"
-            android:layout_weight="1.1"
-            android:layout_gravity="center_vertical"
-            android:text="Localizar" />
-    </LinearLayout>
--->
     <TextView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
@@ -67,6 +27,7 @@
         android:id="@+id/btBuscar"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
+        android:onClick="buscar"
         android:text="Buscar" />
 
     <Button

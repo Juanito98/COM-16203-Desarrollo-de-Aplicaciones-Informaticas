@@ -12,7 +12,7 @@
         android:layout_height="wrap_content"
         android:layout_margin="10dp"
         android:textAlignment="center"
-        android:textSize="21sp"
+        android:textSize="31sp"
         android:textColor="@color/colorPrimaryDark"
         android:text="Colors"/>
 
@@ -40,6 +40,15 @@
         android:layout_height="wrap_content"
         android:layout_marginLeft="16dp"
         android:layout_marginRight="16dp"
+        android:onClick="login"
         android:text="Iniciar Sesión" />
+
+    <Button
+        android:id="@+id/btRegistrarse"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_marginLeft="16dp"
+        android:layout_marginRight="16dp"
+        android:text="Registrarse" />
 
 </LinearLayout>
