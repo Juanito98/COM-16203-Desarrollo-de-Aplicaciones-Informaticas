@@ -18,8 +18,13 @@
             android:src="@android:drawable/ic_menu_search" />
 
         <EditText
+            android:id="@+id/edBuscar"
+            android:maxLines="1"
+            android:inputType="text"
+            android:imeActionLabel="Buscar"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
+            android:imeOptions="actionSearch"
             android:hint="¿Qué buscas?"/>
 
     </LinearLayout>
