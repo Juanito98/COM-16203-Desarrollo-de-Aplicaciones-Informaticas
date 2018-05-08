@@ -4,41 +4,40 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:padding="16dp"
     android:orientation="vertical"
-    tools:context=".Menu">
+    tools:context=".MainActivity">
+
+    <EditText
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:hint="Clave Única"
+        android:id="@+id/etCU"/>
+    <EditText
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:hint="Nombre"
+        android:id="@+id/etNombre"/>
+    <EditText
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:hint="Apellido"
+        android:id="@+id/etApellido"/>
+    <EditText
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:hint="Semestre"
+        android:id="@+id/etSemestre"/>
+
+    <Button
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:text="Añadir"
+        android:id="@+id/btSave"/>
 
     <TextView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_margin="10dp"
-        android:text="Menú"
-        android:textAlignment="center"
-        android:textColor="@color/colorPrimaryDark"
-        android:textSize="30sp" />
-
-    <Button
-        android:id="@+id/btComprar"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:text="Comprar" />
-
-
-    <Button
-        android:id="@+id/btBuscar"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:text="Buscar" />
-
-    <Button
-        android:id="@+id/btHistorial"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:text="Historial" />
-
-    <Button
-        android:id="@+id/btLocalizar"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:text="Localizar" />
+        android:id="@+id/tvAlumnos"/>
 
 </LinearLayout>

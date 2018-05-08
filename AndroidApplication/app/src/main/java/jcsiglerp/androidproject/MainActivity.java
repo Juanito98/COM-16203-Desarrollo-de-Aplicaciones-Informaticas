@@ -17,4 +17,9 @@ public class MainActivity extends AppCompatActivity {
         Intent m = new Intent(getApplicationContext(), Buscar.class);
         startActivity(m);
     }
+
+    protected void signup(View w) {
+        Intent m = new Intent(getApplicationContext(), Buscar.class);
+        startActivity(m);
+    }
 }
