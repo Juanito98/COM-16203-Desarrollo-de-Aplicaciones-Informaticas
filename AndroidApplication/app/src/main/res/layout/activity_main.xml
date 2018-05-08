@@ -43,12 +43,18 @@
         android:onClick="login"
         android:text="Iniciar Sesión" />
 
-    <Button
-        android:id="@+id/btRegistrarse"
+    <TextView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_marginLeft="16dp"
-        android:layout_marginRight="16dp"
-        android:text="Registrarse" />
+        android:textAlignment="center"
+        android:layout_marginTop="16dp"
+        android:autoLink="all"
+        android:linksClickable="true"
+        android:clickable="true"
+        android:focusable="true"
+        android:textColor="@color/colorPrimaryDark"
+        android:id="@+id/tvRegistrarse"
+        android:onClick="signup"
+        android:text="¿No tienes cuenta? Regístrate"/>
 
 </LinearLayout>
