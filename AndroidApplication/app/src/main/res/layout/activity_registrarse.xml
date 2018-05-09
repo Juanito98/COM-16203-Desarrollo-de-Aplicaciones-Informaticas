@@ -11,6 +11,7 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_margin="16dp"
+        android:inputType="textPersonName"
         android:hint="Escribe tu nombre"
         android:id="@+id/etNombre"/>
 
@@ -18,6 +19,7 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_margin="16dp"
+        android:inputType="textEmailAddress"
         android:hint="Correo"
         android:id="@+id/etCorreo"/>
 
@@ -25,6 +27,7 @@
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_margin="16dp"
+        android:inputType="textPassword"
         android:hint="Contraseña"
         android:id="@+id/etContra"/>
 
@@ -33,6 +36,7 @@
         android:layout_height="wrap_content"
         android:layout_margin="16dp"
         android:hint="Dirección"
+        android:inputType="text"
         android:id="@+id/etDireccion"/>
 
     <Button

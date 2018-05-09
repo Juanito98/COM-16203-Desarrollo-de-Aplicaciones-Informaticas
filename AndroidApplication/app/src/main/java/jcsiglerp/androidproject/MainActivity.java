@@ -19,7 +19,7 @@ public class MainActivity extends AppCompatActivity {
     }
 
     protected void signup(View w) {
-        Intent m = new Intent(getApplicationContext(), Buscar.class);
+        Intent m = new Intent(getApplicationContext(), Registrarse.class);
         startActivity(m);
     }
 }
