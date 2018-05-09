@@ -4,41 +4,41 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:orientation="vertical"
-    tools:context=".Menu">
+    tools:context=".Registrarse"
+    android:orientation="vertical">
 
-    <TextView
+    <EditText
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:layout_margin="10dp"
-        android:text="Menú"
-        android:textAlignment="center"
-        android:textColor="@color/colorPrimaryDark"
-        android:textSize="30sp" />
+        android:layout_margin="16dp"
+        android:hint="Escribe tu nombre"
+        android:id="@+id/etNombre"/>
+
+    <EditText
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_margin="16dp"
+        android:hint="Correo"
+        android:id="@+id/etCorreo"/>
+
+    <EditText
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_margin="16dp"
+        android:hint="Contraseña"
+        android:id="@+id/etContra"/>
+
+    <EditText
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_margin="16dp"
+        android:hint="Dirección"
+        android:id="@+id/etDireccion"/>
 
     <Button
-        android:id="@+id/btComprar"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
-        android:text="Comprar" />
-
-
-    <Button
-        android:id="@+id/btBuscar"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:text="Buscar" />
-
-    <Button
-        android:id="@+id/btHistorial"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:text="Historial" />
-
-    <Button
-        android:id="@+id/btLocalizar"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:text="Localizar" />
+        android:layout_margin="16dp"
+        android:text="Regístrate"/>
 
 </LinearLayout>

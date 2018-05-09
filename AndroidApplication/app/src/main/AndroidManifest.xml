@@ -19,7 +19,8 @@
         <activity android:name=".Comprar" />
         <activity android:name=".Buscar" />
         <activity android:name=".Historial" />
-        <activity android:name=".Menu"></activity>
+        <activity android:name=".Menu" />
+        <activity android:name=".Registrarse"></activity>
     </application>
 
 </manifest>
