@@ -38,6 +38,7 @@ public class MainActivity extends AppCompatActivity {
                         .equalTo("correo", etUsuario.getText().toString())
                         .equalTo("contra", etContra.getText().toString())
                         .findAll();
+
                 if(results.isEmpty()) {
                     Toast.makeText(MainActivity.this, "Invalid Login", Toast.LENGTH_SHORT).show();
                 } else {

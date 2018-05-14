@@ -10,18 +10,16 @@ public class Prenda extends RealmObject {
     @PrimaryKey
     String id = UUID.randomUUID().toString();
 
+
     public String nombre;
-    RealmList < Etiqueta > etiquetas;
-    public String descripcion;
-    public int precio;
+    public double precio;
     public String urlImg;
+    RealmList < Etiqueta > etiquetas = new RealmList<>();
 
     public Prenda() {}
 
-    public Prenda(String nombre, String descripcion, int precio, String urlImg) {
+    public Prenda(String nombre, double precio, String urlImg) {
         this.nombre = nombre;
-        this.etiquetas = etiquetas;
-        this.descripcion = descripcion;
         this.precio = precio;
         this.urlImg = urlImg;
     }

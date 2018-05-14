@@ -10,9 +10,8 @@ public class Carrito extends RealmObject {
     @PrimaryKey
     public String id = UUID.randomUUID().toString();
 
-    Usuario usuario;
     public RealmList < Prenda > contenido;
-    public int precioTotal;
+    public double precioTotal;
 
     public void agregarPrenda(Prenda p) {
         contenido.add(p);

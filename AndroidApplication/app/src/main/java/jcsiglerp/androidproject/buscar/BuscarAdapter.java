@@ -74,8 +74,7 @@ public class BuscarAdapter extends RecyclerView.Adapter<BuscarAdapter.BuscarView
         void bind(Prenda prenda) {
             this.prenda = prenda;
             nombre.setText(prenda.nombre);
-            // TODO AGREGAR URL
-            Picasso.get().load("").placeholder(R.mipmap.ic_launcher).error(android.R.drawable.stat_notify_error).into(image);
+            Picasso.get().load(prenda.urlImg).placeholder(R.mipmap.ic_launcher).error(android.R.drawable.stat_notify_error).into(image);
         }
     }
 }

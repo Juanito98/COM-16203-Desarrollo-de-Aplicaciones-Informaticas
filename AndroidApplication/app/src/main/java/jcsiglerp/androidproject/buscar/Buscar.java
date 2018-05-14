@@ -14,15 +14,16 @@ import android.widget.Toast;
 import java.util.ArrayList;
 import java.util.List;
 
+import io.realm.Realm;
+import io.realm.RealmResults;
 import jcsiglerp.androidproject.Model.Prenda;
+import jcsiglerp.androidproject.MyApplication;
 import jcsiglerp.androidproject.R;
 
 public class Buscar extends AppCompatActivity implements BuscarAdapter.AddToCartClickedListener {
 
     EditText etBuscar;
     RecyclerView rvBusqueda;
-    Prenda prendas[] = {new Prenda("Pantalon", "Pantalon azul", 150),
-                        new Prenda("Playera", "Playera blanca", 200)};
 
 
     @Override
@@ -45,11 +46,13 @@ public class Buscar extends AppCompatActivity implements BuscarAdapter.AddToCart
         rvBusqueda.setLayoutManager(new LinearLayoutManager(this));
         rvBusqueda.setAdapter(new BuscarAdapter(this));
 
-        List<Prenda> your_array_list = new ArrayList<Prenda>();
-        your_array_list.add(prendas[0]);
-        your_array_list.add(prendas[1]);
 
-        ((BuscarAdapter)rvBusqueda.getAdapter()).setData(your_array_list);
+        Realm realm = ((MyApplication) getApplication()).getRealm();
+        List < Prenda > results = realm.where(Prenda.class).findAll();
+        if(results.isEmpty())
+            etBuscar.setText("ESTA VACIO");
+        else etBuscar.setText("ESTA LLENO");
+        ((BuscarAdapter)rvBusqueda.getAdapter()).setData(results);
 
     }
 
