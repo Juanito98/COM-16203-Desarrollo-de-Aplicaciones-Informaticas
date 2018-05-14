@@ -12,6 +12,7 @@ import android.widget.Toast;
 import io.realm.Realm;
 import io.realm.RealmResults;
 import jcsiglerp.androidproject.Model.Usuario;
+import jcsiglerp.androidproject.buscar.Buscar;
 
 public class MainActivity extends AppCompatActivity {
 

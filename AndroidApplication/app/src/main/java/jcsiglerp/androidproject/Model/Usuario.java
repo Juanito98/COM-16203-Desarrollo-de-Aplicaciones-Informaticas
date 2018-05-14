@@ -17,6 +17,4 @@ public class Usuario extends RealmObject{
         this.contra = contra;
         this.direccion = direccion;
     }
-
-    public Usuario() {}
 }

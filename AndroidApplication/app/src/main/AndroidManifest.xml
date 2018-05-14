@@ -18,7 +18,7 @@
             </intent-filter>
         </activity>
         <activity android:name=".Comprar" />
-        <activity android:name=".Buscar" />
+        <activity android:name=".buscar.Buscar" />
         <activity android:name=".Historial" />
         <activity android:name=".Registrarse"></activity>
     </application>

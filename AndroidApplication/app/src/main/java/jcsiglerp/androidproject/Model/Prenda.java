@@ -14,14 +14,16 @@ public class Prenda extends RealmObject {
     RealmList < Etiqueta > etiquetas;
     public String descripcion;
     public int precio;
+    public String urlImg;
 
     public Prenda() {}
 
-    public Prenda(String nombre, String descripcion, int precio) {
+    public Prenda(String nombre, String descripcion, int precio, String urlImg) {
         this.nombre = nombre;
         this.etiquetas = etiquetas;
         this.descripcion = descripcion;
         this.precio = precio;
+        this.urlImg = urlImg;
     }
 
     public void addEtiqueta(Etiqueta etiqueta) {
