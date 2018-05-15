@@ -12,8 +12,16 @@
         android:layout_height="wrap_content"
         android:layout_margin="16dp"
         android:inputType="textPersonName"
-        android:hint="Escribe tu nombre"
+        android:hint="Nombre(s)"
         android:id="@+id/etNombre"/>
+
+    <EditText
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_margin="16dp"
+        android:inputType="textPersonName"
+        android:hint="Apellido(s)"
+        android:id="@+id/etApellidos"/>
 
     <EditText
         android:layout_width="match_parent"

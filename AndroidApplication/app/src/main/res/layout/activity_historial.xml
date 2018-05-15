@@ -5,17 +5,19 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     android:orientation="vertical"
-    tools:context=".Historial">
+    tools:context=".historial.Historial">
 
     <TextView
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_margin="16dp"
         android:id="@+id/tvHistorial"
-        android:text="Aquí están tus compras:"/>
+        android:text="Aquí están tus compras"/>
 
-    <GridView
+    <android.support.v7.widget.RecyclerView
+        android:id="@+id/rvHistorial"
         android:layout_width="match_parent"
-        android:layout_height="match_parent"></GridView>
+        android:layout_height="wrap_content">
+    </android.support.v7.widget.RecyclerView>
 
 </LinearLayout>

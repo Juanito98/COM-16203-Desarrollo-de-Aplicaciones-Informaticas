@@ -13,7 +13,7 @@ public class Pedido extends RealmObject {
 
     public Usuario usuario;
 
-    public double cantidad;
+    public Double cantidad;
     public Date fecha;
     public RealmList < Prenda > contenido = new RealmList<>();
 

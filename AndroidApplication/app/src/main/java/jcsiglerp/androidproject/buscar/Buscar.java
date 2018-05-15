@@ -11,10 +11,14 @@ import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import java.util.ArrayList;
+import java.util.HashSet;
+import java.util.List;
+
 import io.realm.Realm;
 import io.realm.RealmResults;
 import jcsiglerp.androidproject.comprar.Comprar;
-import jcsiglerp.androidproject.Historial;
+import jcsiglerp.androidproject.historial.Historial;
 import jcsiglerp.androidproject.Model.Carrito;
 import jcsiglerp.androidproject.Model.Prenda;
 import jcsiglerp.androidproject.Model.Usuario;
@@ -75,7 +79,30 @@ public class Buscar extends AppCompatActivity implements BuscarAdapter.AddToCart
     }
 
     protected void buscar(View v) {
-        Toast.makeText(this, "Buscaste: " + etBuscar.getText().toString(), Toast.LENGTH_SHORT).show();
+        Realm realm = ((MyApplication) getApplication()).getRealm();
+        String keyWords[] = etBuscar.getText().toString().split(" ");
+        List < Prenda > prendaList;
+        if(keyWords[0] != "") {
+            HashSet<Prenda> prendas = new HashSet<>();
+            prendaList = new ArrayList<>();
+            for (String kw : keyWords) {
+                RealmResults<Prenda> results = realm.where(Prenda.class).equalTo("etiquetas.nombre", kw).findAll();
+                for (Prenda p : results)
+                    prendas.add(p);
+            }
+            for(String kw : keyWords) {
+                RealmResults<Prenda> results = realm.where(Prenda.class).equalTo("etiquetas.nombre", kw).findAll();
+                for (Prenda p : results) {
+                    if(prendas.contains(p)) {
+                        prendaList.add(p);
+                        prendas.remove(p);
+                    }
+                }
+            }
+        } else {
+            prendaList = realm.where(Prenda.class).findAll();
+        }
+        ((BuscarAdapter)rvBusqueda.getAdapter()).setData(prendaList);
     }
 
     @Override

@@ -19,7 +19,7 @@
         </activity>
         <activity android:name=".comprar.Comprar" />
         <activity android:name=".buscar.Buscar" />
-        <activity android:name=".Historial" />
+        <activity android:name=".historial.Historial" />
         <activity android:name=".Registrarse"></activity>
     </application>
 

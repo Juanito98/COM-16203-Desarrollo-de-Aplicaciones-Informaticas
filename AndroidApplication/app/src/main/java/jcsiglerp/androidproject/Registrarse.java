@@ -13,7 +13,7 @@ import jcsiglerp.androidproject.Model.Usuario;
 
 public class Registrarse extends AppCompatActivity {
 
-    EditText nombre, correo, contra, direccion;
+    EditText nombre, apellidos, correo, contra, direccion;
     Button btRegistro;
 
     @Override
@@ -22,6 +22,7 @@ public class Registrarse extends AppCompatActivity {
         setContentView(R.layout.activity_registrarse);
 
         nombre = (EditText) findViewById(R.id.etNombre);
+        apellidos = (EditText) findViewById(R.id.etApellidos);
         correo = (EditText) findViewById(R.id.etCorreo);
         contra = (EditText) findViewById(R.id.etContra);
         direccion = (EditText) findViewById(R.id.etDireccion);
@@ -31,7 +32,7 @@ public class Registrarse extends AppCompatActivity {
             @Override
             public void onClick(View v) {
 
-                Usuario a = new Usuario(nombre.getText().toString(), correo.getText().toString(), contra.getText().toString(), direccion.getText().toString());
+                Usuario a = new Usuario(nombre.getText().toString(), apellidos.getText().toString(), correo.getText().toString(), contra.getText().toString(), direccion.getText().toString());
                 Realm realm = ((MyApplication) getApplication()).getRealm();
                 if(realm.where(Usuario.class).equalTo("correo", a.correo).count() > 0) {
                     Toast.makeText(Registrarse.this, "Este correo ya fue usado", Toast.LENGTH_LONG).show();
