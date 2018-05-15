@@ -15,5 +15,7 @@ public class Pedido extends RealmObject {
 
     public double cantidad;
     public Date fecha;
-    RealmList < Prenda > prendas;
+    public RealmList < Prenda > contenido = new RealmList<>();
+
+
 }

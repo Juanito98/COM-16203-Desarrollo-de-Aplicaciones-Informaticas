@@ -46,7 +46,7 @@ public class MainActivity extends AppCompatActivity {
                     Toast.makeText(MainActivity.this, "Login Successfully!", Toast.LENGTH_SHORT).show();
                     Intent intent = new Intent(MainActivity.this, Buscar.class);
                     Bundle b = new Bundle();
-                    b.putString("Usuario", a.correo);
+                    b.putString("correo", a.correo);
                     intent.putExtras(b);
                     startActivity(intent);
                 }

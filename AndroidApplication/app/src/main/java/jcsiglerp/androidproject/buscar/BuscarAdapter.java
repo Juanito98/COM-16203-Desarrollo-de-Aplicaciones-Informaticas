@@ -7,6 +7,7 @@ import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.squareup.picasso.Picasso;
 
@@ -43,37 +44,58 @@ public class BuscarAdapter extends RecyclerView.Adapter<BuscarAdapter.BuscarView
     }
 
     public void setData(List<Prenda> newData) {
-        this.data = data;
+        this.data = newData;
         notifyDataSetChanged();
     }
 
     interface AddToCartClickedListener {
-        void itemClicked(Prenda prenda);
+        void itemClicked(Prenda prenda, int cantidad);
     }
 
     class BuscarViewHolder extends RecyclerView.ViewHolder {
 
-        TextView nombre;
+        TextView tvNombre;
+        TextView tvPrecio;
+        TextView tvCantidad;
         ImageView image;
         Prenda prenda;
 
         public BuscarViewHolder(View itemView, final AddToCartClickedListener lister) {
             super(itemView);
-            nombre = itemView.findViewById(R.id.tvNombre);
+            tvNombre = itemView.findViewById(R.id.tvNombre);
+            tvPrecio = itemView.findViewById(R.id.tvPrecio);
+            tvCantidad = itemView.findViewById(R.id.tvCantidad);
             image = itemView.findViewById(R.id.ivPrenda);
-            itemView.findViewById(R.id.button).setOnClickListener(new View.OnClickListener() {
+            itemView.findViewById(R.id.btAgregar).setOnClickListener(new View.OnClickListener() {
                 @Override
                 public void onClick(View v) {
                     if (prenda != null) {
-                        lister.itemClicked(prenda);
+                        lister.itemClicked(prenda, Integer.parseInt(tvCantidad.getText().toString()));
+                        tvCantidad.setText("1");
                     }
+                }
+            });
+            itemView.findViewById(R.id.btMore).setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    Integer newCantidad = Integer.parseInt(tvCantidad.getText().toString()) + 1;
+                    tvCantidad.setText(newCantidad.toString());
+                }
+            });
+            itemView.findViewById(R.id.btLess).setOnClickListener(new View.OnClickListener() {
+                @Override
+                public void onClick(View v) {
+                    Integer newCantidad = Integer.parseInt(tvCantidad.getText().toString()) - 1;
+                    if(newCantidad > 0)
+                        tvCantidad.setText(newCantidad.toString());
                 }
             });
         }
 
         void bind(Prenda prenda) {
             this.prenda = prenda;
-            nombre.setText(prenda.nombre);
+            tvNombre.setText(prenda.nombre);
+            tvPrecio.setText("$" + prenda.precio);
             Picasso.get().load(prenda.urlImg).placeholder(R.mipmap.ic_launcher).error(android.R.drawable.stat_notify_error).into(image);
         }
     }

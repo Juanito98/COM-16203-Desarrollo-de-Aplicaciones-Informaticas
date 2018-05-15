@@ -23,24 +23,28 @@ public class MyApplication extends Application {
                     public void execute(Realm realm) {
 
                         Etiqueta etiquetas[] = {
-                                new Etiqueta(0, "blusa"),
-                                new Etiqueta(1,"pantalon"),
-                                new Etiqueta(2,"falda"),
-                                new Etiqueta(3,"shorts"),
-                                new Etiqueta(4, "vestido"),
-                                new Etiqueta(5, "chamarra"),
-                                new Etiqueta(6, "playera"),
-                                new Etiqueta(7, "camisa"),
-                                new Etiqueta(8, "azul"),
+                                realm.createObject(Etiqueta.class, "blusa"),
+                                realm.createObject(Etiqueta.class, "pantalon"),
+                                realm.createObject(Etiqueta.class, "falda"),
+                                realm.createObject(Etiqueta.class, "shorts"),
+                                realm.createObject(Etiqueta.class, "vestido"),
+                                realm.createObject(Etiqueta.class, "chamarra"),
+                                realm.createObject(Etiqueta.class, "playera"),
+                                realm.createObject(Etiqueta.class, "camisa"),
+                                realm.createObject(Etiqueta.class, "azul")
                         };
 
-                        for(Etiqueta e : etiquetas)
-                            realm.copyToRealm(e);
-
                         Prenda p = new Prenda("Camiseta con estampa americana", 200.99,"https://anf.scene7.com/is/image/anf/hol_213746_02_prod1?$product-hol-v1$&wid=1900&hei=2375");
-                        p.addEtiqueta(realm.where(Etiqueta.class).findFirst());
-                        //p.addEtiqueta(etiquetas[8]);
+                        p.addEtiqueta(etiquetas[7]);
+                        p.addEtiqueta(etiquetas[8]);
                         realm.copyToRealm(p);
+
+                        p = new Prenda("Shorts de denim superajustados", 149.99, "https://anf.scene7.com/is/image/anf/hol_200251_01_prod1?$product-hol-v1$&wid=1900&hei=2375");
+                        p.addEtiqueta(etiquetas[3]);
+                        p.addEtiqueta(etiquetas[8]);
+                        realm.copyToRealm(p);
+
+
 
                     }
                 })

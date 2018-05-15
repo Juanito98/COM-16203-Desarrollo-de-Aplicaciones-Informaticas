@@ -8,13 +8,13 @@ import io.realm.annotations.PrimaryKey;
 
 public class Prenda extends RealmObject {
     @PrimaryKey
-    String id = UUID.randomUUID().toString();
+    public String id = UUID.randomUUID().toString();
 
 
     public String nombre;
-    public double precio;
+    public Double precio;
     public String urlImg;
-    RealmList < Etiqueta > etiquetas = new RealmList<>();
+    public RealmList < Etiqueta > etiquetas = new RealmList<>();
 
     public Prenda() {}
 

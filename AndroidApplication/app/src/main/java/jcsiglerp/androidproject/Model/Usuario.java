@@ -10,7 +10,7 @@ public class Usuario extends RealmObject{
 
     public String nombre, contra, direccion;
 
-    Carrito carrito = new Carrito();
+    public Carrito carrito = new Carrito();
 
     public Usuario() {}
 
