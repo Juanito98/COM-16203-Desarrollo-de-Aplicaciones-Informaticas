@@ -30,7 +30,7 @@ public class MyApplication extends Application {
                                 realm.createObject(Etiqueta.class, "chamarra"), //4
                                 realm.createObject(Etiqueta.class, "playera"), //5
                                 realm.createObject(Etiqueta.class, "camisa"), //6
-                                realm.createObject(Etiqueta.class, "balnco"), //7
+                                realm.createObject(Etiqueta.class, "blanco"), //7
                                 realm.createObject(Etiqueta.class, "negro"), //8
                                 realm.createObject(Etiqueta.class, "azul"), //9
                                 realm.createObject(Etiqueta.class, "gris"), //10

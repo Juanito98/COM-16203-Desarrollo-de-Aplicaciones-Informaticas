@@ -1,19 +1,27 @@
 package jcsiglerp.androidproject.buscar;
 
 import android.content.Intent;
+import android.os.DropBoxManager;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
+import android.util.Pair;
 import android.view.KeyEvent;
 import android.view.View;
 import android.widget.EditText;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import java.security.KeyStore;
 import java.util.ArrayList;
+import java.util.Collection;
+import java.util.Collections;
+import java.util.Comparator;
+import java.util.HashMap;
 import java.util.HashSet;
 import java.util.List;
+import java.util.Map;
 
 import io.realm.Realm;
 import io.realm.RealmResults;
@@ -24,6 +32,8 @@ import jcsiglerp.androidproject.Model.Prenda;
 import jcsiglerp.androidproject.Model.Usuario;
 import jcsiglerp.androidproject.MyApplication;
 import jcsiglerp.androidproject.R;
+
+import static java.util.Map.Entry.comparingByValue;
 
 public class Buscar extends AppCompatActivity implements BuscarAdapter.AddToCartClickedListener {
 
@@ -83,22 +93,28 @@ public class Buscar extends AppCompatActivity implements BuscarAdapter.AddToCart
         String keyWords[] = etBuscar.getText().toString().split(" ");
         List < Prenda > prendaList;
         if(keyWords[0] != "") {
-            HashSet<Prenda> prendas = new HashSet<>();
+            HashMap <Prenda, Integer > ocurrencias = new HashMap<>();
             prendaList = new ArrayList<>();
-            for (String kw : keyWords) {
-                RealmResults<Prenda> results = realm.where(Prenda.class).equalTo("etiquetas.nombre", kw).findAll();
-                for (Prenda p : results)
-                    prendas.add(p);
-            }
+            Integer value = keyWords.length;
             for(String kw : keyWords) {
                 RealmResults<Prenda> results = realm.where(Prenda.class).equalTo("etiquetas.nombre", kw).findAll();
-                for (Prenda p : results) {
-                    if(prendas.contains(p)) {
-                        prendaList.add(p);
-                        prendas.remove(p);
-                    }
+                for(Prenda prenda : results) {
+                    if(ocurrencias.containsKey(prenda))
+                        ocurrencias.put(prenda, ocurrencias.get(prenda) + value);
+                    else
+                        ocurrencias.put(prenda, value);
                 }
+                value--;
             }
+            List <Map.Entry<Prenda, Integer >> ordenados = new ArrayList<>(ocurrencias.entrySet());
+            Collections.sort(ordenados, new Comparator<Map.Entry<Prenda, Integer>>() {
+                @Override
+                public int compare(Map.Entry<Prenda, Integer> o1, Map.Entry<Prenda, Integer> o2) {
+                    return o2.getValue() - o1.getValue();
+                }
+            });
+            for(Map.Entry<Prenda, Integer> o : ordenados)
+                prendaList.add(o.getKey());
         } else {
             prendaList = realm.where(Prenda.class).findAll();
         }
