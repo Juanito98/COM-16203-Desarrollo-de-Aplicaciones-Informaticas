@@ -20,7 +20,8 @@
         <activity android:name=".comprar.Comprar" />
         <activity android:name=".buscar.Buscar" />
         <activity android:name=".historial.Historial" />
-        <activity android:name=".Registrarse"></activity>
+        <activity android:name=".Registrarse" />
+        <activity android:name=".pedido.VerPedido"></activity>
     </application>
 
 </manifest>
