@@ -1,5 +1,6 @@
 package jcsiglerp.androidproject.historial;
 
+import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.support.v7.widget.LinearLayoutManager;
@@ -13,6 +14,7 @@ import jcsiglerp.androidproject.Model.Usuario;
 import jcsiglerp.androidproject.MyApplication;
 import jcsiglerp.androidproject.R;
 import jcsiglerp.androidproject.comprar.ComprarAdapter;
+import jcsiglerp.androidproject.pedido.VerPedido;
 
 public class Historial extends AppCompatActivity implements HistorialAdapter.viewOnClickPedidoListener {
 
@@ -36,6 +38,10 @@ public class Historial extends AppCompatActivity implements HistorialAdapter.vie
 
     @Override
     public void itemClicked(Pedido pedido) {
-
+        Intent intent = new Intent(Historial.this, VerPedido.class);
+        Bundle b = new Bundle();
+        b.putString("idPedido", pedido.id);
+        intent.putExtras(b);
+        startActivity(intent);
     }
 }
