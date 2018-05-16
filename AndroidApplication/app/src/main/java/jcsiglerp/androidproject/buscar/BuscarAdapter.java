@@ -19,6 +19,7 @@ import jcsiglerp.androidproject.R;
 
 public class BuscarAdapter extends RecyclerView.Adapter<BuscarAdapter.BuscarViewHolder> {
 
+    // Contiene todas las prendas que se despliegan en el RecyclerView
     public List<Prenda> data = new ArrayList<>();
     private AddToCartClickedListener listener;
 
@@ -52,6 +53,7 @@ public class BuscarAdapter extends RecyclerView.Adapter<BuscarAdapter.BuscarView
         void itemClicked(Prenda prenda, int cantidad);
     }
 
+    // Es la clase de la vista de una única prenda
     class BuscarViewHolder extends RecyclerView.ViewHolder {
 
         TextView tvNombre;
@@ -62,6 +64,7 @@ public class BuscarAdapter extends RecyclerView.Adapter<BuscarAdapter.BuscarView
 
         public BuscarViewHolder(View itemView, final AddToCartClickedListener lister) {
             super(itemView);
+            // Asociamos variables a controles gráficos
             tvNombre = itemView.findViewById(R.id.tvNombre);
             tvPrecio = itemView.findViewById(R.id.tvPrecio);
             tvCantidad = itemView.findViewById(R.id.tvCantidad);

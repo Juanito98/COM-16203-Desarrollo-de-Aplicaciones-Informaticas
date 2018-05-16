@@ -14,7 +14,9 @@ public class Suggestions extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_suggestions);
 
+        // Asociamos variables a controles gráficos
         wvSuggestions = (WebView) findViewById(R.id.wvSuggestions);
+        // Desplegamos la webView
         wvSuggestions.loadUrl("http://www.instyle.com/fashion/clothing");
         wvSuggestions.getSettings().setJavaScriptEnabled(true);
         wvSuggestions.setWebViewClient(new WebViewClient());

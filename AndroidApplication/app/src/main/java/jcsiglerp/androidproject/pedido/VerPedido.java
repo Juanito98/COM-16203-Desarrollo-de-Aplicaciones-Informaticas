@@ -27,16 +27,19 @@ public class VerPedido extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_ver_pedido);
 
+        // Asociamos variables a controles gráficos
         tvIdPedido = (TextView) findViewById(R.id.tvPedido);
         tvCantidad = (TextView) findViewById(R.id.tvCantidad);
         rvPedido = (RecyclerView) findViewById(R.id.rvPedido);
         rvPedido.setLayoutManager(new LinearLayoutManager(this));
         rvPedido.setAdapter(new VerPedidoAdapter());
 
+        // Obtenemos el pedido de la base de datos dado el correo del bundle
         Realm realm = ((MyApplication) getApplication()).getRealm();
         String id = this.getIntent().getExtras().get("idPedido").toString();
         pedido = realm.where(Pedido.class).equalTo("id", id).findFirst();
 
+        // Desplegamos las prendas del pedido en el RecyclerView
         List <Prenda> prendas = pedido.contenido;
         ((VerPedidoAdapter) rvPedido.getAdapter()).setData(prendas);
         tvIdPedido.setText("Pedido ID: " + id);

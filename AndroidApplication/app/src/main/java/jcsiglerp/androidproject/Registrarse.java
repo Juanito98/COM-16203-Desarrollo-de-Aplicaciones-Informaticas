@@ -22,6 +22,7 @@ public class Registrarse extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_registrarse);
 
+        // Asociamos variables a controles gráficos
         nombre = (EditText) findViewById(R.id.etNombre);
         apellidos = (EditText) findViewById(R.id.etApellidos);
         correo = (EditText) findViewById(R.id.etCorreo);
@@ -29,15 +30,18 @@ public class Registrarse extends AppCompatActivity {
         direccion = (EditText) findViewById(R.id.etDireccion);
         btRegistro = (Button) findViewById(R.id.btRegistrarse);
 
+        // Botón de registrarse
         btRegistro.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-
+                // Creamos usuario dados los EditTexts
                 Usuario a = new Usuario(nombre.getText().toString(), apellidos.getText().toString(), correo.getText().toString(), contra.getText().toString(), direccion.getText().toString());
                 Realm realm = ((MyApplication) getApplication()).getRealm();
+                // Preguntamos si el correo ya fue usado
                 if(realm.where(Usuario.class).equalTo("correo", a.correo).count() > 0) {
                     Toast.makeText(Registrarse.this, "Este correo ya fue usado", Toast.LENGTH_LONG).show();
                 } else {
+                    // Agregamos al nuevo usuario a la base de datos
                     realm.beginTransaction();
                     realm.copyToRealm(a);
                     realm.commitTransaction();

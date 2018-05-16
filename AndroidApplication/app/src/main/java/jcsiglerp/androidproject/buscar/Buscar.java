@@ -47,9 +47,12 @@ public class Buscar extends AppCompatActivity implements BuscarAdapter.AddToCart
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_buscar);
+
+        // Asociamos variables a controles gráficos
         etBuscar = (EditText) findViewById(R.id.etBuscar);
         rvBusqueda = (RecyclerView) findViewById(R.id.rvBusqueda);
 
+        // Asociamos la función "buscar" al botón
         etBuscar.setOnEditorActionListener(new EditText.OnEditorActionListener() {
 
             @Override
@@ -59,6 +62,7 @@ public class Buscar extends AppCompatActivity implements BuscarAdapter.AddToCart
             }
         });
 
+        // Cambiamos de vista a Ver Carrito
         this.findViewById(R.id.btCarrito).setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -67,6 +71,7 @@ public class Buscar extends AppCompatActivity implements BuscarAdapter.AddToCart
                 startActivity(intent);
             }
         });
+        // Cambiamos a la vista del Historial
         this.findViewById(R.id.btHistorial).setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -75,6 +80,7 @@ public class Buscar extends AppCompatActivity implements BuscarAdapter.AddToCart
                 startActivity(intent);
             }
         });
+        // Cambiamos a la vista del botón de Sugerencias
         this.findViewById(R.id.btSugerencias).setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -86,25 +92,29 @@ public class Buscar extends AppCompatActivity implements BuscarAdapter.AddToCart
         rvBusqueda.setLayoutManager(new LinearLayoutManager(this));
         rvBusqueda.setAdapter(new BuscarAdapter(this));
 
-
+        // Obtenemos todas las prendas de la base de Datos
         Realm realm = ((MyApplication) getApplication()).getRealm();
         RealmResults < Prenda > results = realm.where(Prenda.class).findAll();
-
+        // Llenamos el RecyclerView con todas las prendas de la base de datos
         ((BuscarAdapter)rvBusqueda.getAdapter()).setData(results);
-
         Bundle b = this.getIntent().getExtras();
         carrito = realm.where(Usuario.class).equalTo("correo", b.get("correo").toString()).findFirst().carrito;
     }
 
+    // Esta función despliega el resultado de la búsqueda de prendas
     protected void buscar(View v) {
         Realm realm = ((MyApplication) getApplication()).getRealm();
+        // Guardamos todas las palabras que se teclearon en la búsqueda
         String keyWords[] = etBuscar.getText().toString().split(" ");
-        List < Prenda > prendaList;
+        List < Prenda > prendaList; // El resultado lo insertamos en esta lista
         if(keyWords[0] != "") {
+            // Creamos un hash map con las ocurrencias de las prendas
             HashMap <Prenda, Integer > ocurrencias = new HashMap<>();
             prendaList = new ArrayList<>();
             Integer value = keyWords.length;
             for(String kw : keyWords) {
+                // Por cada palabra escrita vemos las prendas que tienen como etiqueta esta palabra
+                // Le damos prioridad a las prendas con más etiquetas coincidentes
                 RealmResults<Prenda> results = realm.where(Prenda.class).equalTo("etiquetas.nombre", kw).findAll();
                 for(Prenda prenda : results) {
                     if(ocurrencias.containsKey(prenda))
@@ -121,16 +131,21 @@ public class Buscar extends AppCompatActivity implements BuscarAdapter.AddToCart
                     return o2.getValue() - o1.getValue();
                 }
             });
+            // Metemos los resultados en la lista
             for(Map.Entry<Prenda, Integer> o : ordenados)
                 prendaList.add(o.getKey());
         } else {
+            // En caso de que no se haya buscado por ninguna palabra, devuelve todas las prendas
             prendaList = realm.where(Prenda.class).findAll();
         }
+        // Cambiamos el RecyclerView
         ((BuscarAdapter)rvBusqueda.getAdapter()).setData(prendaList);
     }
 
     @Override
+    // Esta función se ejecuta cada que hacemos clic en Añadir al Carrito
     public void itemClicked(Prenda prenda, int cantidad) {
+        // Añadimos "cantidad" prendas "prenda" a la base de datos
         Realm realm = ((MyApplication) getApplication()).getRealm();
         realm.beginTransaction();
         for(int i = 0; i < cantidad; ++i)

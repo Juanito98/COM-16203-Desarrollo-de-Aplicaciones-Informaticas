@@ -17,6 +17,7 @@ import jcsiglerp.androidproject.R;
 
 public class ComprarAdapter extends RecyclerView.Adapter <ComprarAdapter.ComprarViewHolder> {
 
+    // Contiene todas las prendas que se despliegan en el RecyclerView
     public List <Prenda > data = new ArrayList<>();
     private subtrackFromCartClickedListener listener;
 
@@ -40,6 +41,7 @@ public class ComprarAdapter extends RecyclerView.Adapter <ComprarAdapter.Comprar
         return data.size();
     }
 
+    // Cambiamos los datos de la lista
     public void setData(List < Prenda > data) {
         this.data = data;
         notifyDataSetChanged();
@@ -49,6 +51,7 @@ public class ComprarAdapter extends RecyclerView.Adapter <ComprarAdapter.Comprar
         void itemClicked(Prenda prenda);
     }
 
+    // Es la clase de la vista de una única prenda
     class ComprarViewHolder extends RecyclerView.ViewHolder {
 
         Prenda prenda;
@@ -58,6 +61,7 @@ public class ComprarAdapter extends RecyclerView.Adapter <ComprarAdapter.Comprar
         public ComprarViewHolder(View itemView, final subtrackFromCartClickedListener listener) {
             super(itemView);
 
+            // Asociamos variables a controles gráficos
             tvNombre = itemView.findViewById(R.id.tvNombre);
             tvPrecio = itemView.findViewById(R.id.tvPrecio);
             image = itemView.findViewById(R.id.ivPrenda);

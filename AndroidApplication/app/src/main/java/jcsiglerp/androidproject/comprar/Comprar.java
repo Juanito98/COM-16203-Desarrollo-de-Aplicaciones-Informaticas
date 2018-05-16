@@ -35,13 +35,16 @@ public class Comprar extends AppCompatActivity implements ComprarAdapter.subtrac
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_comprar);
 
+        // Asociamos variables a controles gráficos
         rvCompra = (RecyclerView) findViewById(R.id.rvCompra);
         tvTotal = (TextView) findViewById(R.id.tvTotal);
 
+        // Le damos funcionalidad al botón de comprar
         this.findViewById(R.id.btComprar).setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 if(!carrito.contenido.isEmpty()) {
+                    // Instanciamos un nuevo pedido y lo añadimos a la base de datos
                     Realm realm = ((MyApplication) getApplication()).getRealm();
                     realm.beginTransaction();
                     Pedido pedido = new Pedido();
@@ -52,7 +55,7 @@ public class Comprar extends AppCompatActivity implements ComprarAdapter.subtrac
                     realm.copyToRealm(pedido);
                     carrito.clear();
                     realm.commitTransaction();
-
+                    // Vaciamos los objetos del RecyclerView
                     ((ComprarAdapter) rvCompra.getAdapter()).setData(carrito.contenido);
                     tvTotal.setText(String.format("Cantidad total a pagar: $%.2f", carrito.precioTotal));
                     Toast.makeText(Comprar.this, "Compra realizada exitosamente!", Toast.LENGTH_SHORT).show();
@@ -65,6 +68,7 @@ public class Comprar extends AppCompatActivity implements ComprarAdapter.subtrac
         rvCompra.setLayoutManager(new LinearLayoutManager(this));
         rvCompra.setAdapter(new ComprarAdapter(this));
 
+        // Obtenemos el carrito de la base de datos del usuario
         Realm realm = ((MyApplication) getApplication()).getRealm();
         Bundle b = this.getIntent().getExtras();
         carrito = realm.where(Usuario.class).equalTo("correo", b.get("correo").toString()).findFirst().carrito;
@@ -73,7 +77,9 @@ public class Comprar extends AppCompatActivity implements ComprarAdapter.subtrac
     }
 
     @Override
+    // Este código se ejecuta cuando hacemos clic en Quitar
     public void itemClicked(Prenda prenda) {
+        // Modificamos los datos del carrito y le quitamos prenda
         Realm realm = ((MyApplication) getApplication()).getRealm();
         realm.beginTransaction();
         carrito.quitarPrenda(prenda);

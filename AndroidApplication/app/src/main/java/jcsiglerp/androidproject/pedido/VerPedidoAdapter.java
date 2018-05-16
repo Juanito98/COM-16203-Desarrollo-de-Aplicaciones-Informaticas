@@ -18,6 +18,7 @@ import jcsiglerp.androidproject.comprar.ComprarAdapter;
 
 public class VerPedidoAdapter extends RecyclerView.Adapter<VerPedidoAdapter.VerPedidoViewHolder> {
 
+    // Contiene las prendas que van a estar disponibles en el layout
     public List<Prenda > data = new ArrayList<>();
 
     @Override
@@ -36,11 +37,13 @@ public class VerPedidoAdapter extends RecyclerView.Adapter<VerPedidoAdapter.VerP
         return data.size();
     }
 
+    // Cambiamos los datos del RecyclerView
     public void setData(List < Prenda > data) {
         this.data = data;
         notifyDataSetChanged();
     }
 
+    // Es la clase de la vista de una única prenda
     class VerPedidoViewHolder extends RecyclerView.ViewHolder {
 
         Prenda prenda;
@@ -50,11 +53,13 @@ public class VerPedidoAdapter extends RecyclerView.Adapter<VerPedidoAdapter.VerP
         public VerPedidoViewHolder(View itemView) {
             super(itemView);
 
+            // Asociamos variables a controles gráficos
             tvNombre = itemView.findViewById(R.id.tvNombre);
             tvPrecio = itemView.findViewById(R.id.tvPrecio);
             image = itemView.findViewById(R.id.ivPrenda);
         }
 
+        // Esta función se ejecuta para hacer display a la prenda
         public void bind(Prenda prenda) {
             this.prenda = prenda;
             tvNombre.setText(prenda.nombre);
