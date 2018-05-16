@@ -14,14 +14,16 @@ public class MyApplication extends Application {
 
     public void onCreate() {
         super.onCreate();
-        // Se inicializa
+        // Se inicializa el realm
         Realm.init(this);
         RealmConfiguration config = new RealmConfiguration.Builder()
                 .deleteRealmIfMigrationNeeded()
+                // Esta parte llena la base de datos en el momento que descargas la aplicación
                 .initialData(new Realm.Transaction() {
                     @Override
                     public void execute(Realm realm) {
 
+                        // Cargamos las etiquetas que pueden tener las prendas
                         Etiqueta etiquetas[] = {
                                 realm.createObject(Etiqueta.class, "pantalon"),//0
                                 realm.createObject(Etiqueta.class, "falda"),//1
@@ -39,9 +41,12 @@ public class MyApplication extends Application {
                                 realm.createObject(Etiqueta.class, "verano"), //13
                                 realm.createObject(Etiqueta.class, "otoño"), //14
                                 realm.createObject(Etiqueta.class, "invierno"), //15
-                                realm.createObject(Etiqueta.class, "rojo") //15
+                                realm.createObject(Etiqueta.class, "rojo"), //16
+                                realm.createObject(Etiqueta.class, "impermeable") //17
                         };
 
+
+                        // Cargamos las prendas a la base de datos
                         Prenda p = new Prenda("Pantalon gris", 1000,"https://anf.scene7.com/is/image/anf/hol_187654_02_prod1?$product-hol-v1$&wid=1900&hei=2375");
                         p.addEtiqueta(etiquetas[0]);
                         p.addEtiqueta(etiquetas[10]);
@@ -90,7 +95,7 @@ public class MyApplication extends Application {
                         p.addEtiqueta(etiquetas[12]);
                         realm.copyToRealm(p);
 
-                        p = new Prenda("Vestido ázul con blanco", 650,"https://anf.scene7.com/is/image/anf/hol_205785_01_prod1?$product-hol-v1$&wid=800&hei=1000");
+                        p = new Prenda("Vestido azul con blanco", 650,"https://anf.scene7.com/is/image/anf/hol_205785_01_prod1?$product-hol-v1$&wid=800&hei=1000");
                         p.addEtiqueta(etiquetas[3]);
                         p.addEtiqueta(etiquetas[9]);
                         p.addEtiqueta(etiquetas[13]);
@@ -108,10 +113,11 @@ public class MyApplication extends Application {
                         p.addEtiqueta(etiquetas[15]);
                         realm.copyToRealm(p);
 
-                        p = new Prenda("Chamarra impermeable ázul con gorro", 1700,"https://anf.scene7.com/is/image/anf/anf_197006_03_prod1?$product-anf-v1$&wid=800&hei=1000");
+                        p = new Prenda("Chamarra impermeable azul con gorro", 1700,"https://anf.scene7.com/is/image/anf/anf_197006_03_prod1?$product-anf-v1$&wid=800&hei=1000");
                         p.addEtiqueta(etiquetas[4]);
                         p.addEtiqueta(etiquetas[8]);
                         p.addEtiqueta(etiquetas[15]);
+                        p.addEtiqueta(etiquetas[17]);
                         realm.copyToRealm(p);
 
                         p = new Prenda("Playera blanca con estampado de palomitas", 450,"https://cdn.shopify.com/s/files/1/1040/3796/products/tshirt_nino_2.jpg?v=1491405332");
@@ -138,8 +144,9 @@ public class MyApplication extends Application {
                         p.addEtiqueta(etiquetas[12]);
                         realm.copyToRealm(p);
 
-                        p = new Prenda("Playera blanca con azúl", 450,"https://anf.scene7.com/is/image/anf/hol_204725_02_prod1?$product-hol-v1$&wid=800&hei=1000");
+                        p = new Prenda("Playera blanca con azul", 450,"https://anf.scene7.com/is/image/anf/hol_204725_02_prod1?$product-hol-v1$&wid=800&hei=1000");
                         p.addEtiqueta(etiquetas[5]);
+                        p.addEtiqueta(etiquetas[7]);
                         p.addEtiqueta(etiquetas[9]);
                         p.addEtiqueta(etiquetas[13]);
                         realm.copyToRealm(p);
@@ -150,14 +157,15 @@ public class MyApplication extends Application {
                         p.addEtiqueta(etiquetas[13]);
                         realm.copyToRealm(p);
 
-                        p = new Prenda("Camisa ázul", 600,"https://anf.scene7.com/is/image/anf/anf_169649_04_prod1?$product-anf-v1$&wid=800&hei=1000");
+                        p = new Prenda("Camisa azul", 600,"https://anf.scene7.com/is/image/anf/anf_169649_04_prod1?$product-anf-v1$&wid=800&hei=1000");
                         p.addEtiqueta(etiquetas[6]);
                         p.addEtiqueta(etiquetas[9]);
                         p.addEtiqueta(etiquetas[15]);
                         realm.copyToRealm(p);
 
-                        p = new Prenda("Camisa de cuadros ázul con blanco", 640,"https://anf.scene7.com/is/image/anf/anf_197331_01_prod1?$product-anf-v1$&wid=800&hei=1000");
+                        p = new Prenda("Camisa de cuadros azul con blanco", 640,"https://anf.scene7.com/is/image/anf/anf_197331_01_prod1?$product-anf-v1$&wid=800&hei=1000");
                         p.addEtiqueta(etiquetas[6]);
+                        p.addEtiqueta(etiquetas[7]);
                         p.addEtiqueta(etiquetas[9]);
                         p.addEtiqueta(etiquetas[14]);
                         realm.copyToRealm(p);

@@ -5,15 +5,13 @@ import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.support.v7.widget.LinearLayoutManager;
 import android.support.v7.widget.RecyclerView;
-import android.widget.TextView;
+import android.view.View;
 
 import io.realm.Realm;
 import io.realm.RealmResults;
 import jcsiglerp.androidproject.Model.Pedido;
-import jcsiglerp.androidproject.Model.Usuario;
 import jcsiglerp.androidproject.MyApplication;
 import jcsiglerp.androidproject.R;
-import jcsiglerp.androidproject.comprar.ComprarAdapter;
 import jcsiglerp.androidproject.pedido.VerPedido;
 
 public class Historial extends AppCompatActivity implements HistorialAdapter.viewOnClickPedidoListener {

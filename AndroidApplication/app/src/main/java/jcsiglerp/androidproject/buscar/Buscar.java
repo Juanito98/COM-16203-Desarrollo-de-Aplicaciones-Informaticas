@@ -25,6 +25,7 @@ import java.util.Map;
 
 import io.realm.Realm;
 import io.realm.RealmResults;
+import jcsiglerp.androidproject.Suggestions;
 import jcsiglerp.androidproject.comprar.Comprar;
 import jcsiglerp.androidproject.historial.Historial;
 import jcsiglerp.androidproject.Model.Carrito;
@@ -71,6 +72,13 @@ public class Buscar extends AppCompatActivity implements BuscarAdapter.AddToCart
             public void onClick(View v) {
                 Intent intent = new Intent(Buscar.this, Historial.class);
                 intent.putExtras(Buscar.this.getIntent().getExtras());
+                startActivity(intent);
+            }
+        });
+        this.findViewById(R.id.btSugerencias).setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(Buscar.this, Suggestions.class);
                 startActivity(intent);
             }
         });

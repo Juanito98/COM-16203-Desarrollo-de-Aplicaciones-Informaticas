@@ -2,6 +2,10 @@
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
     package="jcsiglerp.androidproject">
 
+    <uses-permission android:name="android.permission.INTERNET" />
+    <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
+    <uses-permission android:name="android.permission.WRITE_EXTERNAL_STORAGE" />
+
     <application
         android:name=".MyApplication"
         android:allowBackup="true"
@@ -21,7 +25,8 @@
         <activity android:name=".buscar.Buscar" />
         <activity android:name=".historial.Historial" />
         <activity android:name=".Registrarse" />
-        <activity android:name=".pedido.VerPedido"></activity>
+        <activity android:name=".pedido.VerPedido" />
+        <activity android:name=".Suggestions" />
     </application>
 
 </manifest>

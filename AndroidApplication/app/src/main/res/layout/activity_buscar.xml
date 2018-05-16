@@ -43,6 +43,14 @@
             android:layout_weight="1"
             android:layout_height="match_parent"
             android:text="Ir al carrito"/>
+
+        <Button
+            android:id="@+id/btSugerencias"
+            android:layout_width="0dp"
+            android:layout_weight="1"
+            android:layout_height="match_parent"
+            android:text="¿Sugerencia?"/>
+
         <Button
             android:id="@+id/btHistorial"
             android:layout_width="0dp"

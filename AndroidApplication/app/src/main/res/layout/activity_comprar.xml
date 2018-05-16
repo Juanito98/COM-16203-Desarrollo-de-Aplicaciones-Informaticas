@@ -7,6 +7,7 @@
     android:orientation="vertical"
     tools:context=".buscar.Buscar">
 
+
     <TextView
         android:id="@+id/tvTotal"
         android:layout_width="match_parent"
