@@ -161,6 +161,7 @@ public class MyApplication extends Application {
                         p.addEtiqueta(etiquetas[5]);
                         p.addEtiqueta(etiquetas[8]);
                         p.addEtiqueta(etiquetas[13]);
+                        p.addEtiqueta(etiquetas[19]);
                         realm.copyToRealm(p);
 
                         p = new Prenda("Camisa azul", 600,"https://anf.scene7.com/is/image/anf/anf_169649_04_prod1?$product-anf-v1$&wid=800&hei=1000");
