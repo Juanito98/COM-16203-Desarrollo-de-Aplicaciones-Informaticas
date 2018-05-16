@@ -42,7 +42,9 @@ public class MyApplication extends Application {
                                 realm.createObject(Etiqueta.class, "otoño"), //14
                                 realm.createObject(Etiqueta.class, "invierno"), //15
                                 realm.createObject(Etiqueta.class, "rojo"), //16
-                                realm.createObject(Etiqueta.class, "impermeable") //17
+                                realm.createObject(Etiqueta.class, "impermeable"), //17
+                                realm.createObject(Etiqueta.class, "hombre"), // 18
+                                realm.createObject(Etiqueta.class, "mujer") // 19
                         };
 
 
@@ -75,6 +77,7 @@ public class MyApplication extends Application {
                         p.addEtiqueta(etiquetas[1]);
                         p.addEtiqueta(etiquetas[8]);
                         p.addEtiqueta(etiquetas[13]);
+                        p.addEtiqueta(etiquetas[19]);
                         realm.copyToRealm(p);
 
                         p = new Prenda("Shorts negros", 600,"https://anf.scene7.com/is/image/anf/anf_199052_01_prod1?$product-anf-v1$&wid=1900&hei=2375");
@@ -93,18 +96,21 @@ public class MyApplication extends Application {
                         p.addEtiqueta(etiquetas[2]);
                         p.addEtiqueta(etiquetas[11]);
                         p.addEtiqueta(etiquetas[12]);
+                        p.addEtiqueta(etiquetas[19]);
                         realm.copyToRealm(p);
 
                         p = new Prenda("Vestido azul con blanco", 650,"https://anf.scene7.com/is/image/anf/hol_205785_01_prod1?$product-hol-v1$&wid=800&hei=1000");
                         p.addEtiqueta(etiquetas[3]);
                         p.addEtiqueta(etiquetas[9]);
                         p.addEtiqueta(etiquetas[13]);
+                        p.addEtiqueta(etiquetas[19]);
                         realm.copyToRealm(p);
 
                         p = new Prenda("Vestido negro con encaje", 700,"https://anf.scene7.com/is/image/anf/anf_203394_01_prod1?$product-anf-v1$&wid=800&hei=1000");
                         p.addEtiqueta(etiquetas[3]);
                         p.addEtiqueta(etiquetas[8]);
                         p.addEtiqueta(etiquetas[12]);
+                        p.addEtiqueta(etiquetas[19]);
                         realm.copyToRealm(p);
 
                         p = new Prenda("Chamarra negra", 1500,"https://anf.scene7.com/is/image/anf/anf_205002_01_prod1?$product-anf-v1$&wid=800&hei=1000");
