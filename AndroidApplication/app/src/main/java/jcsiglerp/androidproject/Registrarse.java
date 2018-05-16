@@ -10,6 +10,7 @@ import android.widget.Toast;
 
 import io.realm.Realm;
 import jcsiglerp.androidproject.Model.Usuario;
+import jcsiglerp.androidproject.buscar.Buscar;
 
 public class Registrarse extends AppCompatActivity {
 
@@ -40,7 +41,10 @@ public class Registrarse extends AppCompatActivity {
                     realm.beginTransaction();
                     realm.copyToRealm(a);
                     realm.commitTransaction();
-                    Intent intent = new Intent(Registrarse.this, MainActivity.class);
+                    Intent intent = new Intent(Registrarse.this, Buscar.class);
+                    Bundle b = new Bundle();
+                    b.putString("correo", a.correo);
+                    intent.putExtras(b);
                     startActivity(intent);
                 }
             }
