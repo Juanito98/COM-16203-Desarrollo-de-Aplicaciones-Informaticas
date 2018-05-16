@@ -46,6 +46,7 @@ public class Registrarse extends AppCompatActivity {
                     b.putString("correo", a.correo);
                     intent.putExtras(b);
                     startActivity(intent);
+                    finish();
                 }
             }
         });
